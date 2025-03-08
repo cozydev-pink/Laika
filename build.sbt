@@ -31,8 +31,7 @@ inThisBuild(
       matrix + ("project" -> (matrix("project") :+ "plugin"))
     },
     githubWorkflowBuildMatrixExclusions ++= List(
-      MatrixExclude(Map("project" -> "rootJS")),
-      MatrixExclude(Map("project" -> "rootJVM"))
+      MatrixExclude(Map("project" -> "rootJS"))
     ),
     githubWorkflowBuild ++= Seq(
       WorkflowStep.Sbt(
