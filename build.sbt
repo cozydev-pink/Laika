@@ -20,19 +20,20 @@ inThisBuild(
     description          := "Text Markup Transformer for sbt and Scala applications",
     startYear            := Some(2012),
     licenses := Seq("Apache 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt")),
-    crossScalaVersions := Seq(versions.scala2_12, versions.scala2_13, versions.scala3),
+    crossScalaVersions := Seq(versions.scala2_12),
     scalaVersion       := versions.scala2_12,
     developers         := List(Developer("jenshalm", "Jens Halm", "", url("http://planet42.org"))),
     tlCiHeaderCheck    := false,
     tlCiDependencyGraphJob := false,
-    githubWorkflowJavaVersions += JavaSpec.temurin("17"),
+    githubWorkflowPublishTargetBranches := Seq(),
+    githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17")),
     githubWorkflowBuildMatrixAdditions ~= { matrix =>
       matrix + ("project" -> (matrix("project") :+ "plugin"))
     },
-    githubWorkflowBuildMatrixExclusions ++= {
-      MatrixExclude(Map("project" -> "plugin", "java" -> JavaSpec.temurin("17").render)) ::
-        List("2.13", "3").map(scala => MatrixExclude(Map("project" -> "plugin", "scala" -> scala)))
-    },
+    githubWorkflowBuildMatrixExclusions ++= List(
+      MatrixExclude(Map("project" -> "rootJS")),
+      MatrixExclude(Map("project" -> "rootJVM"))
+    ),
     githubWorkflowBuild ++= Seq(
       WorkflowStep.Sbt(
         List("docs/mdoc", "docs/laikaSite"),
