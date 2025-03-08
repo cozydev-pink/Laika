@@ -15,6 +15,7 @@ import laika.helium.config.{
 import laika.config.*
 import laika.sbt.LaikaConfig
 import laika.theme.ThemeProvider
+import pink.cozydev.protosearch.ui.SearchUI
 
 object ManualSettings {
 
@@ -212,6 +213,8 @@ object ManualSettings {
     .epub.navigationDepth(2)
     .epub.coverImages(paths.epub.coverSbt, paths.epub.coverLib)
     .pdf.coverImages(paths.pdf.coverSbt, paths.pdf.coverLib)
+    .extendWith(SearchUI)
+    .extendWith(SearchUI.searchNavBar(_))
     .build
 
 }

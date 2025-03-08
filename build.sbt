@@ -88,6 +88,7 @@ lazy val root = tlCrossRootProject
       )
   }
 
+import pink.cozydev.protosearch.analysis.IndexRendererConfig
 lazy val docs = project.in(file("docs"))
   .dependsOn(plugin)
   .enablePlugins(LaikaPlugin)
@@ -97,6 +98,7 @@ lazy val docs = project.in(file("docs"))
   .settings(
     name                      := "laika-docs",
     laikaTheme                := ManualSettings.helium,
+    laikaRenderers            += IndexRendererConfig(includeInSite = true),
     laikaConfig               := ManualSettings.config,
     laikaExtensions           := Seq(GitHubFlavor, SyntaxHighlighting, ManualBundle),
     Laika / sourceDirectories := Seq(mdocOut.value),
