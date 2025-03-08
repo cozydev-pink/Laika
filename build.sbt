@@ -24,9 +24,9 @@ inThisBuild(
     scalaVersion       := versions.scala2_12,
     developers         := List(Developer("jenshalm", "Jens Halm", "", url("http://planet42.org"))),
     tlCiHeaderCheck    := false,
-    tlCiDependencyGraphJob := false,
+    tlCiDependencyGraphJob              := false,
     githubWorkflowPublishTargetBranches := Seq(),
-    githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17")),
+    githubWorkflowJavaVersions          := Seq(JavaSpec.temurin("17")),
     githubWorkflowBuildMatrixAdditions ~= { matrix =>
       matrix + ("project" -> (matrix("project") :+ "plugin"))
     },
@@ -89,6 +89,7 @@ lazy val root = tlCrossRootProject
   }
 
 import pink.cozydev.protosearch.analysis.IndexRendererConfig
+
 lazy val docs = project.in(file("docs"))
   .dependsOn(plugin)
   .enablePlugins(LaikaPlugin)
@@ -98,7 +99,7 @@ lazy val docs = project.in(file("docs"))
   .settings(
     name                      := "laika-docs",
     laikaTheme                := ManualSettings.helium,
-    laikaRenderers            += IndexRendererConfig(includeInSite = true),
+    laikaRenderers += IndexRendererConfig(includeInSite = true),
     laikaConfig               := ManualSettings.config,
     laikaExtensions           := Seq(GitHubFlavor, SyntaxHighlighting, ManualBundle),
     Laika / sourceDirectories := Seq(mdocOut.value),

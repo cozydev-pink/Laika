@@ -14,7 +14,7 @@ addSbtPlugin("org.typelevel" % "laika-sbt" % "1.3.1")
 
 addSbtPlugin("org.typelevel" % "sbt-typelevel" % "0.7.7")
 
-
 resolvers +=
   "Sonatype OSS Snapshots".at("https://s01.oss.sonatype.org/content/repositories/snapshots")
+
 addSbtPlugin("pink.cozydev" % "protosearch-sbt" % "0.0-bf56dcc-SNAPSHOT")
