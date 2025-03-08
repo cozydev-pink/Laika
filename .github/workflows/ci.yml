@@ -33,7 +33,6 @@ jobs:
         project: [rootJS, rootJVM, plugin]
         exclude:
           - project: rootJS
-          - project: rootJVM
     runs-on: ${{ matrix.os }}
     timeout-minutes: 60
     steps:
