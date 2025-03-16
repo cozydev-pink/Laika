@@ -17,4 +17,4 @@ addSbtPlugin("org.typelevel" % "sbt-typelevel" % "0.7.7")
 resolvers +=
   "Sonatype OSS Snapshots".at("https://s01.oss.sonatype.org/content/repositories/snapshots")
 
-addSbtPlugin("pink.cozydev" % "protosearch-sbt" % "0.0-87982b9-SNAPSHOT")
+addSbtPlugin("pink.cozydev" % "protosearch-sbt" % "0.0-fd3e8b2-SNAPSHOT")
